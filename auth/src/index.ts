@@ -1,6 +1,8 @@
 import express from "express";
 import "express-async-errors";
 import mongoose from "mongoose";
+import cookieSession from 'cookie-session';
+
 import { currentUserRouter } from "./routes/current-user";
 import { signinRouter } from "./routes/signin";
 import { signoutRouter } from "./routes/signout";
@@ -10,7 +12,13 @@ import { NotFoundError } from "./errors/not-found-error";
 import { Request, Response } from "express";
 
 const app = express();
-
+app.set('trust proxy', true);
+app.use(
+	cookieSession({
+		signed: false,
+		secure: true
+	})
+);
 
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000 }));
