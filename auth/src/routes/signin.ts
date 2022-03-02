@@ -4,12 +4,12 @@ import jwt from 'jsonwebtoken';
 
 import { Password } from '../services/password';
 import { User } from '../models/user';
-import { validateRequest } from '../middlewares/validate-request';
-import { BadRequestError } from '../errors/bad-request-error';
+import { validateRequest, BadRequestError } from '@cutickets/common';
+
 
 const router = express.Router();
 
-router.post('/api/users/signin',
+router.post('/api/users/signIn',
 	[
 		body('email')
 			.isEmail()
@@ -51,4 +51,4 @@ router.post('/api/users/signin',
 	})
 
 
-export { router as signinRouter }
+export { router as signInRouter }
