@@ -1,2 +1,2 @@
-# microservices_ticketing
-microservices_ticketing
+# microservice_ticketing
+microservice_ticketing
